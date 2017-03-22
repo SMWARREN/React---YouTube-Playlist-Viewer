@@ -1,0 +1,59 @@
+body {
+  background-color: #FFFFFF;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url('https://source.unsplash.com/random');
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.mainContainer{
+  padding-top: 10px;
+  background-color: #fafafa;
+  max-width: 950px;
+  margin: auto;
+  -webkit-box-shadow: 2px 8px 49px -14px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 8px 49px -14px rgba(0,0,0,0.75);
+  box-shadow: 2px 8px 49px -14px rgba(0,0,0,0.75);
+}
+.container {
+margin: 0 auto;
+  padding: 40px;
+  width: 80%;
+  color: #333;
+  background: #419be0;
+}
+
+.videoContainer{
+  max-width: 222px;
+  display: inline-block;
+  vertical-align:top;
+  padding: 20px 10px 20px 0px;
+  font-size: 12px;
+  text-align: center;
+}
+.playlistContainer {
+    max-width: 928px;
+    margin: auto;
+}
+.playlistTitle{
+background-color: #FFF;
+font-size: 20px;
+border-bottom: 1px solid rgba(0,0,0,.0975);
+border-top: 1px solid rgba(0,0,0,.0975);
+border-left: 1px dotted #CCC;
+border-right: 1px dotted #CCC;
+}
+.imageProps{
+  margin-top: -10px;
+  object-fit: cover;
+  border-radius: 18px 18px 18px 18px;
+  -moz-border-radius: 18px 18px 18px 18px;
+  -webkit-border-radius: 18px 18px 18px 18px;
+  border: 0px solid #000000;
+  -webkit-box-shadow: 11px 10px 45px -17px rgba(0,0,0,0.48);
+-moz-box-shadow: 11px 10px 45px -17px rgba(0,0,0,0.48);
+box-shadow: 11px 10px 45px -17px rgba(0,0,0,0.48);
+
+}
