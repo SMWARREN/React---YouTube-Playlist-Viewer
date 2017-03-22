@@ -22,7 +22,7 @@ React YouTube Playlist Viewer is a useful React prototype to showcase ES6+ synta
 
 ## Installation  
 
-To run react-YouTubePlaylistViewer, clone the repo. Install [Node](https://nodejs.org/en/) & NPM and run `npm start` from the react-YouTubePlaylistViewer directory. Run `npm build` to  build the production files and then you can upload the the files in the build folder to yourserver.
+To run react-YouTubePlaylistViewer, clone the repo. Install [Node](https://nodejs.org/en/) & NPM and run `npm install` and than after run  `npm start` from the react-YouTubePlaylistViewer directory. Run `npm build` to  build the production files and then you can upload the the files in the build folder to yourserver.
 
 - Remember to change the Constants in the model folder to your Youtube API's
 
