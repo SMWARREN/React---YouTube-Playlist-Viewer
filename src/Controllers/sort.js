@@ -5,8 +5,8 @@ function sortPlaylist(data, data2, state) {
   let dateHolder = '';
   const playListArray = [];
 
-  data.forEach(function (playlists) {
-    playlists.forEach( function(item) {
+  data.forEach((playlists) => {
+    playlists.forEach((item) => {
       const youtubeObject = object.PVSongObject(item.publishedAt,
          item.id,
          item.description,
@@ -17,16 +17,15 @@ function sortPlaylist(data, data2, state) {
   const songsPlaylist = songsArray.filter(item => item.publishedAt);
   songsArray = [];
 
-  songsPlaylist.forEach(function (item) {
+  songsPlaylist.forEach((item) => {
     const date = new Date(item.publishedAt);
     if (date.toDateString() === dateHolder) {
       const youtubeObject = object.PVSongObject(item.publishedAt,
          item.id,
          item.description,
           item.title);
-          songsArray.push(youtubeObject);
-        }
-    else {
+      songsArray.push(youtubeObject);
+    } else {
       if (playListArray.length === 0) {
         dateHolder = date.toDateString();
         songsArray.push({ title: dateHolder, publishedAt: date, id: 'playlist' });
@@ -42,34 +41,42 @@ function sortPlaylist(data, data2, state) {
          item.id,
          item.description,
           item.title);
-          songsArray.push(youtubeObject);
+      songsArray.push(youtubeObject);
     }
   });
 
-  playListArray.sort(function (a,b) {
-    return new Date(b[0].publishedAt) - new Date(a[0].publishedAt);
-  });
+  playListArray.sort((a, b) => new Date(b[0].publishedAt) - new Date(a[0].publishedAt));
+
+
   let change = [{ title: 'All Videos' }, ...data2.data.allSongs];
-  change.sort(function (a,b) {
-    return new Date(b.publishedAt) - new Date(a.publishedAt);
-  });
+  change.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
   if (state.search !== '') {
-    const searchArray = []
+    const searchArray = [];
     change = [...data2.data.allSongs];
 
-    change.forEach(function (item) {
+    change.forEach((item) => {
       if (item.title.includes(state.search)) {
         const youtubeObject = object.PVSongObject(item.publishedAt,
             item.id,
             item.description,
             item.title);
-            searchArray.push(youtubeObject);
-          }
+        searchArray.push(youtubeObject);
+      }
     });
     change = [{ title: 'All Videos' }, ...searchArray];
   }
   if (state.playlistState === 'All') {
-    return [change];
+    let duplicate = '';
+    const array = [];
+    change.forEach((item) => {
+      if (item.title === duplicate) {
+      } else {
+        array.push(item);
+      }
+      duplicate = item.title;
+    });
+    return [array];
   }
   if (state.playlistState === 'Playlists') {
     return data;

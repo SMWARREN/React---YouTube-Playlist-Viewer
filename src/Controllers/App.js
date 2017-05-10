@@ -85,8 +85,7 @@ class AppController extends React.Component {
           const songs = [];
           response.data.items.forEach((item) => {
             if (item.snippet.title === 'Private video' || item.snippet.title === 'Deleted video') {
-            }
-            else {
+            } else {
               this.setState({ currentVideo: item.snippet.resourceId.videoId });
               songs.push({
                 publishedAt: item.snippet.publishedAt,
@@ -107,8 +106,7 @@ class AppController extends React.Component {
           firstSong++;
           this.loadSongs(firstSong);
         });
-    }
-    else {
+    } else {
       this.filterCleanPlaylists();
     }
   }
@@ -137,8 +135,7 @@ class AppController extends React.Component {
       this.setState({ response: newState });
       if (next !== undefined) {
         this.loadPlaylist(next);
-      }
-      else {
+      } else {
         this.loadSongs();
       }
     });
@@ -154,10 +151,11 @@ class AppController extends React.Component {
             id={this.state.currentVideo}
             opts={this.state.opts} onReady={this.onReady.bind(this)}
           />
-          <p>Search: <input type="text"
+          <p>Search: <input
+            type="text"
             value={this.state.search}
             onChange={this.SearchState.bind(this)}
-            />
+          />
             <label>
               <input type="radio" value={'All'} checked={this.state.playlistState === 'All'} onChange={this.changePlaylist.bind(this)} />{' All Videos '}
             </label>
