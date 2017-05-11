@@ -1,4 +1,3 @@
-import object from '../Models/model';
 
 function findMatches(wordToMatch, videos) {
   return videos.filter((item) => {
