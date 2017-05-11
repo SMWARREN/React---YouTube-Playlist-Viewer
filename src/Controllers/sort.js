@@ -8,6 +8,8 @@ function findMatches(wordToMatch, videos) {
 
 
 function sortPlaylist(data, data2, state) {
+  const suggestions = document.querySelector('.suggestions');
+  suggestions.innerHTML = '';
   const sortedAll = data2.data.allSongs.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
   let duplicate = '';
   let array = [];
@@ -22,6 +24,21 @@ function sortPlaylist(data, data2, state) {
     if (state.search !== '') {
       const search = [...array];
       array = findMatches(state.search, search);
+      const suggestions = document.querySelector('.suggestions');
+
+      const html = array.map((item) => {
+        const regex = new RegExp(state.search, 'gi');
+        const itemTitle = item.title.replace(regex, `<span class="hl">${state.search}</span>`);
+        return `
+          <li>
+            <span class="name">${itemTitle}</span>
+          </li>
+        `;
+      }).join('');
+      suggestions.innerHTML = html;
+    } else {
+      const suggestions = document.querySelector('.suggestions');
+      suggestions.innerHTML = '';
     }
 
     return [array];

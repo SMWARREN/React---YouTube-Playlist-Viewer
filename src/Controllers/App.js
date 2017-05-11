@@ -154,10 +154,13 @@ class AppController extends React.Component {
             opts={this.state.opts} onReady={this.onReady.bind(this)}
           />
           <p>Search: <input
+            className="inputButton"
             type="text"
             value={this.state.search}
             onChange={this.SearchState.bind(this)}
-          />
+          /><ul className="suggestions">
+            <li>Filter for a Video TItle</li>
+          </ul>
             <label>
               <input type="radio" value={'All'} checked={this.state.playlistState === 'All'} onChange={this.changePlaylist.bind(this)} />{' All Videos '}
             </label>
