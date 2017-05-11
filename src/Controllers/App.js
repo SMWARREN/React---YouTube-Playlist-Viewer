@@ -83,6 +83,7 @@ class AppController extends React.Component {
         + this.state.response[firstSong].id
         + REST_API2HELPER).then((response) => {
           const songs = [];
+          const playlistTitle = (this.state.response[firstSong].snippet.channelTitle);
           response.data.items.forEach((item) => {
             if (item.snippet.title === 'Private video' || item.snippet.title === 'Deleted video') {
             } else {
@@ -91,7 +92,8 @@ class AppController extends React.Component {
                 publishedAt: item.snippet.publishedAt,
                 id: item.snippet.resourceId.videoId,
                 title: item.snippet.title,
-                description: item.snippet.description });
+                description: item.snippet.description,
+                playlist: playlistTitle });
             }
           });
           const allSongs = update(
