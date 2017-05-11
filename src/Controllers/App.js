@@ -73,6 +73,7 @@ class AppController extends React.Component {
     this.state.search,
     { $set: event.target.value },
        );
+    window.scrollTo(0, 2000);
     this.setState({ playlistState: 'All', search: newState });
   }
 
@@ -158,9 +159,9 @@ class AppController extends React.Component {
             type="text"
             value={this.state.search}
             onChange={this.SearchState.bind(this)}
-          /><ul className="suggestions">
-            <li>Filter for a Video TItle</li>
-          </ul>
+          /></p><ul className="suggestions">
+            <li>Search Videos</li>
+          </ul><p>
             <label>
               <input type="radio" value={'All'} checked={this.state.playlistState === 'All'} onChange={this.changePlaylist.bind(this)} />{' All Videos '}
             </label>

@@ -24,20 +24,17 @@ function sortPlaylist(data, data2, state) {
     if (state.search !== '') {
       const search = [...array];
       array = findMatches(state.search, search);
-      const suggestions = document.querySelector('.suggestions');
 
-      const html = array.map((item) => {
-        const regex = new RegExp(state.search, 'gi');
-        const itemTitle = item.title.replace(regex, `<span class="hl">${state.search}</span>`);
-        return `
-          <li>
-            <span class="name">${itemTitle}</span>
-          </li>
-        `;
+      const html = array.map((item, index) => {
+        if (index < 4) {
+          const regex = new RegExp(state.search, 'gi');
+          const itemTitle = item.title.replace(regex, `<span class="hl">${state.search}</span>`);
+          return `<li><span class="name">${itemTitle}</span></li>`;
+        }
+        return '';
       }).join('');
       suggestions.innerHTML = html;
     } else {
-      const suggestions = document.querySelector('.suggestions');
       suggestions.innerHTML = '';
     }
 
@@ -53,12 +50,14 @@ function sortPlaylist(data, data2, state) {
     array.forEach((item, index) => {
       const current = new Date(item.publishedAt).toDateString();
       if (date !== current && index === 0) {
-        item.playlist = current;
-        dayArray.push(item);
+        const mItem = item;
+        mItem.playlist = current;
+        dayArray.push(mItem);
       }
       if (date === current) {
-        item.playlist = date;
-        dayArray.push(item);
+        const mItem = item;
+        mItem.playlist = date;
+        dayArray.push(mItem);
       }
       if (date !== current && index !== 0) {
         dayPlaylist.push(dayArray);
@@ -68,6 +67,7 @@ function sortPlaylist(data, data2, state) {
     });
     return dayPlaylist;
   }
+  return data;
 }
 
 export default { sortPlaylist };
