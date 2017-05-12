@@ -24,6 +24,7 @@ function sortPlaylist(data, data2, state) {
     if (state.search !== '') {
       const search = [...array];
       array = findMatches(state.search, search);
+      const len = `There are ${array.length} results.<p>`;
 
       const html = array.map((item, index) => {
         if (index < 4) {
@@ -33,7 +34,7 @@ function sortPlaylist(data, data2, state) {
         }
         return '';
       }).join('');
-      suggestions.innerHTML = html;
+      suggestions.innerHTML = len + html;
     } else {
       suggestions.innerHTML = '';
     }
