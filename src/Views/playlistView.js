@@ -68,7 +68,7 @@ function Playlists(props) {
   if (listOfPlaylists.length > 3) {
     return <PlaylistContainer data={listOfPlaylists} data2={props} />;
   }
-  return <div><center>Loading All of The Data</center></div>;
+  return <div><center>Loading All of The Data</center><br /></div>;
 }
 
 export default {

@@ -145,15 +145,16 @@ class AppController extends React.Component {
   }
 
   render() {
-    return (
+    return (<div>
       <div className="mainContainer">
         <center>
           <div className="playlistTitle"><p>{this.state.title}</p> </div>
-          <YouTube
+          {this.state.response !== null ? <div className="loaderContainer"><div className="loader" id="loader-1" /></div> : <YouTube
             videoId={this.state.currentVideo}
             id={this.state.currentVideo}
             opts={this.state.opts} onReady={this.onReady.bind(this)}
-          />
+          />}
+
           <p>Search: <input
             className="inputButton"
             type="text"
@@ -175,6 +176,7 @@ class AppController extends React.Component {
         </center>
         <Playlist.Playlists data={this.state} buttonClick={this.changeYoutube.bind(this)} />
       </div>
+    </div>
     );
   }
 }
