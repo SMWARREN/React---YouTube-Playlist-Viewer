@@ -30,6 +30,8 @@ function sortPlaylist(data, data2, state) {
         if (index < 4) {
           const regex = new RegExp(state.search, 'gi');
           const itemTitle = item.title.replace(regex, `<span class="hl">${state.search}</span>`);
+          console.log(itemTitle);
+
           return `<li><span class="name">${itemTitle}</span></li>`;
         }
         return '';

@@ -60,7 +60,11 @@ box-shadow: 11px 10px 45px -17px rgba(0,0,0,0.48);
 span.name{
 text-align: center;
 }
+span.suggestionsHighLight{
+  font-weight:600;
+  text-decoration: underline;
 
+}
 .suggestions {
   margin: 0;
   padding: 0;
