@@ -76,7 +76,6 @@ class AppController extends React.Component {
     window.scrollTo(0, 2000);
     this.setState({ playlistState: 'All', search: newState });
   }
-
   loadSongs(firstSong = '0') {
     const playlistLength = (this.state.response.length);
     if (firstSong !== playlistLength) {
@@ -154,8 +153,7 @@ class AppController extends React.Component {
             id={this.state.currentVideo}
             opts={this.state.opts} onReady={this.onReady.bind(this)}
           />}
-
-          <p>Search: <input
+          <div><p>Search: <input
             className="inputButton"
             type="text"
             value={this.state.search}
@@ -172,7 +170,7 @@ class AppController extends React.Component {
             <label>
               <input type="radio" value={'Day'} checked={this.state.playlistState === 'Day'} onChange={this.changePlaylist.bind(this)} />{' By Day '}
             </label>
-          </p>
+          </p></div>
         </center>
         <Playlist.Playlists data={this.state} buttonClick={this.changeYoutube.bind(this)} />
       </div>

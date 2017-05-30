@@ -2,6 +2,7 @@
   "name": "react-push-videos",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "axios": "^0.15.3",
     "immutability-helper": "^2.1.2",

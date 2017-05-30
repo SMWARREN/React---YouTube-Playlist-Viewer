@@ -5,40 +5,34 @@ function findMatches(wordToMatch, videos) {
     return item.title.match(regex) || item.playlist.match(regex);
   });
 }
-
-
+function dedupeByKey(arr, key) {
+  const temp = arr.map(el => el[key]);
+  return arr.filter((el, i) =>
+    temp.indexOf(el[key]) === i);
+}
 function sortPlaylist(data, data2, state) {
   const suggestions = document.querySelector('.suggestions');
   suggestions.innerHTML = '';
-  const sortedAll = data2.data.allSongs.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-  let duplicate = '';
-  let array = [];
-  sortedAll.forEach((item) => {
-    if (item.title === duplicate) {
-    } else {
-      array.push(item);
-    }
-    duplicate = item.title;
-  });
+  const sortedAll = data2.data.allSongs.sort(
+    (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+  let array = dedupeByKey(sortedAll, 'title');
+  if (state.search !== '') {
+    const search = array;
+    array = findMatches(state.search, search);
+    const len = `There are ${array.length} results.<p>`;
+    const html = array.map((item, index) => {
+      if (index < 4) {
+        const regex = new RegExp(state.search, 'gi');
+        const itemTitle = item.title.replace(regex, `<span class="suggestionsHighLight">${state.search}</span>`);
+        return `<li><span class="name">${itemTitle}</span></li>`;
+      }
+      return '';
+    }).join('');
+    suggestions.innerHTML = len + html;
+  } else {
+    suggestions.innerHTML = '';
+  }
   if (state.playlistState === 'All') {
-    if (state.search !== '') {
-      const search = [...array];
-      array = findMatches(state.search, search);
-      const len = `There are ${array.length} results.<p>`;
-
-      const html = array.map((item, index) => {
-        if (index < 4) {
-          const regex = new RegExp(state.search, 'gi');
-          const itemTitle = item.title.replace(regex, `<span class="suggestionsHighLight">${state.search}</span>`);
-          return `<li><span class="name">${itemTitle}</span></li>`;
-        }
-        return '';
-      }).join('');
-      suggestions.innerHTML = len + html;
-    } else {
-      suggestions.innerHTML = '';
-    }
-
     return [array];
   }
   if (state.playlistState === 'Playlists') {
