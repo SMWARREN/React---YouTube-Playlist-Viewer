@@ -1,5 +1,5 @@
 # react-YouTubePlaylistViewer - React Push Videos
-<img src="http://i.imgur.com/Rk8Pf1x.jpg">
+<img src="http://i.imgur.com/bF6erJt.png">
 
 
 ## Demo
@@ -8,7 +8,7 @@
 
 
 ## Description
-React YouTube Playlist Viewer is a useful React prototype to showcase ES6+ syntax and Youtube API's. 
+React YouTube Playlist Viewer is a useful React prototype to showcase ES6+ syntax and Youtube API's.
 
 - Every Refresh displays a different Background Image
 - Lazy Loading
